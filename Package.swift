@@ -1,28 +1,27 @@
 // swift-tools-version: 5.7
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
-    name: "F1StatsSwift",
+    name: "F1Stats",
+    platforms: [.macOS(.v13), .iOS(.v16)],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "F1StatsSwift",
-            targets: ["F1StatsSwift"]),
+            name: "F1Stats",
+            targets: ["F1Stats"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/Quick/Quick.git", .upToNextMajor(from: "6.1.0")),
+        .package(url: "https://github.com/Quick/Nimble.git", .upToNextMajor(from: "11.2.1")),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "F1StatsSwift",
+            name: "F1Stats",
             dependencies: []),
         .testTarget(
-            name: "F1StatsSwiftTests",
-            dependencies: ["F1StatsSwift"]),
+            name: "F1StatsTests",
+            dependencies: [
+                "F1Stats", "Quick", "Nimble"
+            ]),
     ]
 )
