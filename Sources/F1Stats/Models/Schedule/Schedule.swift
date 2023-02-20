@@ -38,16 +38,16 @@ public struct Schedule: Codable, CustomStringConvertible {
             guard let innerLocation = oehrlySchedule.location[roundNumberKey] else {
                 continue
             }
-            let location = Schedule.Event.Location(country: country,
-                                                   location: innerLocation)
+            let location = EventLocation(country: country,
+                                         location: innerLocation)
             guard let eventDate = oehrlySchedule.eventDate[roundNumberKey] else {
                 continue
             }
             guard let rawFormat = oehrlySchedule.eventFormat[roundNumberKey] else {
                 continue
             }
-            let format = Event.Format(rawValue: rawFormat)
-            var sessions = [Event.Session]()
+            let format = EventFormat(rawValue: rawFormat)
+            var sessions = [EventSession]()
             if let sessionRawValue = oehrlySchedule.session1[roundNumberKey] {
                 if let sessionDate = oehrlySchedule.session1Date[roundNumberKey],
                    let sessionRawValue, let sessionDate {
@@ -89,7 +89,7 @@ public struct Schedule: Codable, CustomStringConvertible {
             guard let commonName = oehrlySchedule.eventName[roundNumberKey] else {
                 continue
             }
-            let name = Schedule.Event.Name(officalName: officialName, commonName: commonName)
+            let name = EventName(officalName: officialName, commonName: commonName)
             guard let f1APISupport = oehrlySchedule.f1APISupport[roundNumberKey] else {
                 continue
             }

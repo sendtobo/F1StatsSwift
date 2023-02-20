@@ -7,25 +7,23 @@
 
 import Foundation
 
-public extension Schedule.Event {
-    /// Describes one of the sessions during an event
-    struct Session: Codable, CustomStringConvertible {
-        /// The format for the session
-        var format: Session.Format
+/// Describes one of the sessions during an event
+public struct EventSession: Codable, CustomStringConvertible {
+    /// The format for the session
+    public var format: SessionFormat
 
-        /// The date of the session
-        var date: Date
+    /// The date of the session
+    public var date: Date
 
-        public var description: String {
+    public var description: String {
             """
             Session Format: \(format.description)
             Date: \(DateFormatter.longDate.string(from: date))
             """
-        }
     }
 }
 
-extension Collection where Element == Schedule.Event.Session {
+extension Collection where Element == EventSession {
     var fullDescription: String {
         var description = "Sessions:\n"
         for session in self {

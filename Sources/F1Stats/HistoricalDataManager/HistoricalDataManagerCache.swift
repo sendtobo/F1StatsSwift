@@ -7,24 +7,22 @@
 
 import Foundation
 
-extension HistoricalDataManager {
-    class Cache {
-        var scheduleCache: [HistoricalDataManager.SupportedYear: Schedule] = [:]
+class HistoricalDataManagerCache {
+    var scheduleCache: [HistoricalDataManager.SupportedYear: Schedule] = [:]
 
-        func schedule(for year: HistoricalDataManager.SupportedYear) -> Schedule? {
-            scheduleCache[year]
-        }
+    func schedule(for year: HistoricalDataManager.SupportedYear) -> Schedule? {
+        scheduleCache[year]
+    }
 
-        func cache(schedule: Schedule, for year: HistoricalDataManager.SupportedYear) {
-            scheduleCache[year] = schedule
-        }
+    func cache(schedule: Schedule, for year: HistoricalDataManager.SupportedYear) {
+        scheduleCache[year] = schedule
+    }
 
-        func clear(year: HistoricalDataManager.SupportedYear) {
-            scheduleCache.removeValue(forKey: year)
-        }
+    func clear(year: HistoricalDataManager.SupportedYear) {
+        scheduleCache.removeValue(forKey: year)
+    }
 
-        func clear() {
-            scheduleCache = [:]
-        }
+    func clear() {
+        scheduleCache = [:]
     }
 }

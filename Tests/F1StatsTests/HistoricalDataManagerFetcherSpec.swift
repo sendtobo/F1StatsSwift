@@ -15,7 +15,7 @@ class HistoricalDataManagerFetcherSpec: QuickSpec {
     override func spec() {
         describe("HistoricalDataManger.Fetcher") {
             it("can fetch year") {
-                let schedule = try! await HistoricalDataManager.Fetcher.fetch(.y2022)
+                let schedule = try! await HistoricalDataManagerFetcher.fetch(.y2022)
                 let bahrainTesting = schedule.events[1]
                 expect(bahrainTesting.roundNumber) == 0
                 expect(bahrainTesting.location.country) == "Bahrain"

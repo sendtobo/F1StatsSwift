@@ -14,19 +14,19 @@ extension Schedule {
         public var roundNumber: Int
 
         /// The location of the event
-        public var location: Location
+        public var location: EventLocation
 
         /// The name of the event
-        public var name: Name
+        public var name: EventName
 
         /// The offical start time of the main part of the event
         public var eventDate: Date
 
         /// The format for the event
-        public var format: Self.Format
+        public var format: EventFormat
 
         /// All off the session from practice to race
-        public var sessions: [Event.Session]
+        public var sessions: [EventSession]
 
         /// Is supported by the F1 API
         public var f1APISupport: Bool

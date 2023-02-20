@@ -7,20 +7,18 @@
 
 import Foundation
 
-public extension Schedule.Event {
-    // Describes the name of the event
-    struct Name: Codable, CustomStringConvertible {
-        /// The official name of the event
-        public var officalName: String
-        
-        /// The name most people use to refer to the event
-        public var commonName: String
+// Describes the name of the event
+public struct EventName: Codable, CustomStringConvertible {
+    /// The official name of the event
+    public var officalName: String
 
-        public var description: String {
+    /// The name most people use to refer to the event
+    public var commonName: String
+
+    public var description: String {
             """
             Official Name: \(officalName)
             Common Name: \(commonName)
             """
-        }
     }
 }

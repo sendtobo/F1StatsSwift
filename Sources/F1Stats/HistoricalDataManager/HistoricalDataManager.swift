@@ -10,7 +10,7 @@ import Foundation
 public class HistoricalDataManager {
     public static var shared: HistoricalDataManager = .init()
 
-    var cache = Cache()
+    var cache = HistoricalDataManagerCache()
 
     public func getSchedule(year: SupportedYear,
                             includeTestingSession: Bool = true) async -> F1Stats.Schedule? {
@@ -18,7 +18,7 @@ public class HistoricalDataManager {
             return schedule
         }
         do {
-            let schedule = try await Self.Fetcher.fetch(year)
+            let schedule = try await HistoricalDataManagerFetcher.fetch(year)
             cache.cache(schedule: schedule, for: year)
             return schedule
         } catch {

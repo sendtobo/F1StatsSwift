@@ -15,14 +15,14 @@ class HistoricalDataManagerCacheSpec: QuickSpec {
     override func spec() {
         describe("HistoricalDataManagerCacheSpec") {
             it("save into cache") {
-                let cache = HistoricalDataManager.Cache()
+                let cache = HistoricalDataManagerCache()
                 let schedule = Schedule(events: [])
                 expect(cache.schedule(for: .y2022)).to(beNil())
                 cache.cache(schedule: schedule, for: .y2022)
                 expect(cache.schedule(for: .y2022)).toNot(beNil())
             }
             it("clear cache for single year") {
-                let cache = HistoricalDataManager.Cache()
+                let cache = HistoricalDataManagerCache()
                 let schedule = Schedule(events: [])
                 cache.cache(schedule: schedule, for: .y2022)
                 expect(cache.schedule(for: .y2022)).toNot(beNil())
@@ -30,7 +30,7 @@ class HistoricalDataManagerCacheSpec: QuickSpec {
                 expect(cache.schedule(for: .y2022)).to(beNil())
             }
             it("clear full cache") {
-                let cache = HistoricalDataManager.Cache()
+                let cache = HistoricalDataManagerCache()
                 let schedule = Schedule(events: [])
                 cache.cache(schedule: schedule, for: .y2022)
                 cache.cache(schedule: schedule, for: .y2021)
